@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>259. Getter & Setter</title>
+  </head>
+  <body>
+    <script>
+      //class - es6
+      class Kisi {
+        constructor(ad, meslek, dogumyili) {
+          this.ad = ad;
+          this.meslek = meslek;
+          this.dogumyili = dogumyili;
+          console.log("nesne oluşturuldu.");
+        }
+        yasHesapla() {
+          let tarih = new Date().getFullYear();
+          return tarih - this.dogumyili;
+        }
+
+        get ad() {
+          return this._ad;
+        }
+
+        set ad(value) {
+          if (value.lenght < 3) {
+            console.log("ad için çok az karakter");
+            return;
+          }
+          this._ad = value;
+        }
+
+        get dogumyili() {
+          return this._dogumyili;
+        }
+
+        set dogumyili(value) {
+          if (value < 1900 || value > new Date().getFullYear()) {
+            console.log("tarih bilgisi yanlis");
+          }
+          this._dogumyili = value;
+        }
+      }
+
+      let kisi1 = new Kisi("Ali Kurtkovan", "Mevzun", 2025);
+
+      console.log(kisi1);
+      console.log(kisi1.ad);
+    </script>
+  </body>
+</html>
